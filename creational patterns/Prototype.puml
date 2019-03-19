@@ -1,0 +1,25 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "class Protype(原型模式)" #DDDDDD {
+    interface Prototype<<interface>>
+    {
+    +clone():Prototype
+    }
+    note right: 原型的抽象类\n或接口
+
+    class ConcretePrototype
+    {
+    +clone():Prototype
+    }
+    note right: 具体的原型类
+    class Client{
+    -prototype:Prototype
+    -clone:Prototype
+    +operation():void
+    }
+
+    Prototype <|.. ConcretePrototype
+    Client ..> Prototype:<<import>>
+}
+@enduml

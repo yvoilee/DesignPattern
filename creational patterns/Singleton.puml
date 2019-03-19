@@ -1,0 +1,15 @@
+@startuml
+
+package "class Singleton(单例模式)" #DDDDDD {
+
+    class Singleton
+    {
+    +getInstance():Singleton
+    -Singleton()
+    }
+    note right: 单例类
+
+    Singleton <.. Client
+}
+
+@enduml

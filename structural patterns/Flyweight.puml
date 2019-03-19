@@ -1,0 +1,32 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "class Flyweight(享元模式)" #DDDDDD {
+    class FlyweightFactory{
+    - mMap:HashMap
+    + getFlyweight()：Flyweight
+    }
+    note right: 享元工厂
+
+    abstract class Flyweight{
+    + operation(extrinsicStatus:String)
+    }
+    note right: 享元对象抽象基类或者接口
+
+    class ConcreteFlyweight{
+    - intrinsicState:String
+    + operation(extrinsicStatus:String)
+    }
+    note right: 具体的享元对象
+
+    class UnsharedConcreteFlyweight{
+    - allState:String
+    + operation(extrinsicStatus:String)
+    }
+    note right: 非共享的享元对象
+
+    FlyweightFactory *--> Flyweight
+    Flyweight <|-- ConcreteFlyweight
+    Flyweight <|-- UnsharedConcreteFlyweight
+}
+@enduml

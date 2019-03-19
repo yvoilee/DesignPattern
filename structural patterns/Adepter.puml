@@ -1,0 +1,29 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package "class Adepter(适配器模式)" #DDDDDD {
+     class Client
+
+    interface Target
+    {
+     +request():void
+    }
+    note right: 这是客户所期待的接口\n目标可以是具体类或抽象类\n或接口
+
+    class Adeptee
+    {
+    + specificRequest():void
+        }
+    note left: 需要适配的接口
+
+    class Adepter{
+    -adeptee:Adeptee
+    + request():void
+    }
+    note left: 代理类\n通过在内部包装\n一个Adeptee对象\n把源接口换成目标接口
+
+    Target <-- Client
+    Target <|.. Adepter
+    Adeptee <-- Adepter
+}
+@enduml
